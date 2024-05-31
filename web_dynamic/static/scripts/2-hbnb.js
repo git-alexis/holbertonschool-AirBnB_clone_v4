@@ -1,21 +1,32 @@
-#!/usr/bin/node
+$(document).ready(() => {
+  const amenityIds = {};
 
-$('document').ready(function () {
-    const listAmenities = {};
-    $('input[type="checkbox"]').change(function () {
-      if ($(this).is(':checked')) {
-        listAmenities[$(this).attr('data-id')] = $(this).attr('data-name');
-      } else {
-        delete listAmenities[$(this).attr('data-id')];
-      }
-      $('.amenities H4').text(Object.values(listAmenities).join(', '));
-    });
+  $('input[type="checkbox"]').on('change', function () {
+    const amenityId = $(this).data('id');
+    const amenityName = $(this).data('name');
+
+    if (this.checked) {
+      amenityIds[amenityId] = amenityName;
+    } else {
+      delete amenityIds[amenityId];
+    }
+
+    let amenityList = Object.values(amenityIds).join(', ');
+    const maxLength = 35;
+
+    if (amenityList.length > maxLength) {
+      amenityList = `${amenityList.substring(0, maxLength)}...`;
+    }
+
+    $('.amenities h4').text(amenityList);
   });
 
-$.get('http://0.0.0.0:5001/api/v1/status/', function (data) {
-  if (data.status === 'OK') {
-    $('#api_status').addClass('available');
-  } else {
-    $('#api_status').removeClass('available');
-  }
+  $.get('http://0.0.0.0:5001/api/v1/status/')
+    .then(response => {
+      const apiStatus = $('#api_status');
+      apiStatus.toggleClass('available', response.status === 'OK');
+    })
+    .catch(error => {
+      console.error('Error fetching API status', error);
+    });
 });
