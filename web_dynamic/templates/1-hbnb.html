@@ -5,21 +5,27 @@
   <meta charset="UTF-8">
 
   <!-- css -->
-  <link rel="stylesheet" type="text/css" href="../static/styles/4-common.css?cache_id={{ cache_id }}">
-  <link rel="stylesheet" type="text/css" href="../static/styles/3-header.css?cache_id={{ cache_id }}">
-  <link rel="stylesheet" type="text/css" href="../static/styles/3-footer.css?cache_id={{ cache_id }}">
-  <link rel="stylesheet" type="text/css" href="../static/styles/6-filters.css?cache_id={{ cache_id }}">
-  <link rel="stylesheet" type="text/css" href="../static/styles/8-places.css?cache_id={{ cache_id }}">
+  <link rel="stylesheet" type="text/css" href="../static/styles/4-common.css?{{ cache_id }}">
+  <link rel="stylesheet" type="text/css" href="../static/styles/3-header.css?{{ cache_id }}">
+  <link rel="stylesheet" type="text/css" href="../static/styles/3-footer.css?{{ cache_id }}">
+  <link rel="stylesheet" type="text/css" href="../static/styles/6-filters.css?{{ cache_id }}">
+  <link rel="stylesheet" type="text/css" href="../static/styles/8-places.css?{{ cache_id }}">
 
   <!-- icone -->
-  <link rel="icon" href="../static/images/icon.png?cache_id={{ cache_id }}" />
+  <link rel="icon" href="../static/images/icon.png?{{ cache_id }}" />
 
   <!-- js -->
-  <script src="https://code.jquery.com/jquery-3.2.1.min.js?cache_id={{ cache_id }}"></script>
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js?{{ cache_id }}"></script>
   <script src="../static/scripts/1-hbnb.js"></script>
 
   <!-- title -->
   <title>HBnB</title>
+
+  <style>
+    .amenities input[type="checkbox"] {
+      margin-right: 10px;
+    }
+  </style>
 </head>
 
 <body>
